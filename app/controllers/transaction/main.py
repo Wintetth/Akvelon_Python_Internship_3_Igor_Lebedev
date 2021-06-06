@@ -4,6 +4,8 @@ from peewee import ModelSelect
 
 from pandas import DataFrame
 
+from datetime import datetime
+
 from app.models.user import User
 from app.models.transaction import Transaction
 
@@ -90,16 +92,24 @@ def view_transaction(key: str, transaction_id: int):
         201
     )
 
-def view_all_transactions(key: str):
+def view_all_transactions(key: str, filter: str = None):
     user: User = User.get_or_none(key=key)
 
     if user is None:
         return (jsonify(message="You need to log in before."), 403)
 
     transactions: ModelSelect = Transaction.select().where(Transaction.user == user)
+
+    if len(filter) == 10 and len(filter.split(".")) == 3 and all(map(lambda x: x.isdigit(), filter.split("."))):
+        transactions = transactions.select().where(Transaction.date == datetime.strptime(filter, "%Y.%m.%d"))
+    elif filter == "income":
+        transactions = transactions.select().where(Transaction.amount > 0)
+    elif filter == "outcome":
+        transactions = transactions.select().where(Transaction.amount < 0)
+        
     if not transactions.exists():
         return (jsonify(message="No transactions were found."), 404)
-    
+
     return (
         jsonify(
             message="All transactions viewed.",
