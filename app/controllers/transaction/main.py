@@ -1,5 +1,8 @@
 from flask import jsonify, request
+
 from peewee import ModelSelect
+
+from pandas import DataFrame
 
 from app.models.user import User
 from app.models.transaction import Transaction
@@ -106,6 +109,38 @@ def view_all_transactions(key: str):
                     "amount": transaction.amount,
                     "date": transaction.date.strftime("%Y.%m.%d")
                 } for transaction in transactions
+            ]
+        ),
+        201
+    )
+
+def grouped_transactions(key: str):
+    user: User = User.get_or_none(key=key)
+
+    if user is None:
+        return (jsonify(message="You need to log in before."), 403)
+
+    transactions: ModelSelect = Transaction.select().where(Transaction.user == user)
+    if not transactions.exists():
+        return (jsonify(message="No transactions were found."), 404)
+    
+    transactions_frame: DataFrame = DataFrame(data=[
+        {
+            "amount": transaction.amount,
+            "date": transaction.date.strftime("%Y.%m.%d")
+        } for transaction in transactions
+    ])
+
+    transactions_frame = transactions_frame.groupby("date").agg({"amount": "sum"}).reset_index()
+
+    return (
+        jsonify(
+            message="Grouped transactions viewed.",
+            transactions=[
+                {
+                    "date": row["date"],
+                    "amount": row["amount"]
+                } for (_, row) in transactions_frame.iterrows()
             ]
         ),
         201
