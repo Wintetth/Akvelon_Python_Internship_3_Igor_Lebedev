@@ -1,0 +1,27 @@
+GET http://localhost:5000/
+###
+
+POST http://localhost:5000/user/create
+###
+
+POST http://localhost:5000/user/delete
+###
+
+POST http://localhost:5000/user/edit
+###
+
+GET http://localhost:5000/user/view
+###
+
+
+
+POST http://localhost:5000/transaction/create
+###
+
+POST http://localhost:5000/transaction/delete
+###
+
+POST http://localhost:5000/transaction/edit
+###
+
+GET http://localhost:5000/transaction/view

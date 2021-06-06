@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.pythonPath": "d:\\Personal Finances\\venv\\Scripts\\python.exe"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch",
+				"type": "python",
+				"request": "launch",
+				"program": "${workspaceRoot}/wsgi.py"
+			}
+		]
+	}
+}
