@@ -45,5 +45,22 @@ def delete_user():
 def edit_user():
     return (jsonify(message="User edited."), 201)
 
-def view_user(key: str):
-    return (jsonify(message="User viewed."), 200)
+def view_user(key: str = None):
+    if request.method == "GET":
+        user: User = User.get_or_none(key=key)
+    else:
+        user: User = User.get_or_none(email=request.form.get("email", ""), password=request.form.get("password", ""))
+
+    if user is None:
+        return (jsonify(message="You need to log in before."), 403)
+
+    return (
+        jsonify(
+            message="User viewed.",
+            first_name=user.first_name,
+            last_name=user.last_name,
+            email=user.email,
+            key=user.key
+        ),
+        200
+    )

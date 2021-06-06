@@ -15,7 +15,14 @@ POST http://localhost:5000/user/edit HTTP/1.1
 content-type: application/json
 ###
 
-GET http://localhost:5000/user/view HTTP/1.1
+# Mufasa@gmail.com     | LionKing | Mufasa-7060439016582037422
+GET http://localhost:5000/user/Mufasa-7060439016582037422/view HTTP/1.1
+###
+
+POST http://localhost:5000/user/view HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+email=Mufasa@gmail.com&password=LionKing
 ###
 
 
