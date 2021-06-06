@@ -40,6 +40,14 @@ def create_user():
     )
 
 def delete_user():
+    key: str = request.form.get("key", "")
+    user: User = User.get_or_none(key=key)
+
+    if user is None:
+        return (jsonify(message="You need to log in before."), 403)
+    
+    user.delete_instance()
+
     return (jsonify(message="User deleted."), 201)
 
 def edit_user():
