@@ -31,16 +31,18 @@ email=Mufasa@gmail.com&password=LionKing
 
 
 
-POST http://localhost:5000/transaction/create HTTP/1.1
-content-type: application/json
+POST http://localhost:5000/transaction/Mufasa-5498381435679789444/create HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+amount=20500
 ###
 
 POST http://localhost:5000/transaction/delete HTTP/1.1
-content-type: application/json
+content-type: application/x-www-form-urlencoded
 ###
 
 POST http://localhost:5000/transaction/edit HTTP/1.1
-content-type: application/json
+content-type: application/x-www-form-urlencoded
 ###
 
 GET http://localhost:5000/transaction/view HTTP/1.1
