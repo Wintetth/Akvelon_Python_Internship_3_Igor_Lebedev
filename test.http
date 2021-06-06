@@ -8,11 +8,13 @@ first_name=Airatk&last_name=Shram&email=Mufasa@gmail.com&password=LionKing
 ###
 
 POST http://localhost:5000/user/delete HTTP/1.1
-content-type: application/json
+content-type: application/x-www-form-urlencoded
 ###
 
 POST http://localhost:5000/user/edit HTTP/1.1
-content-type: application/json
+content-type: application/x-www-form-urlencoded
+
+key=Mufasa-7060439016582037422&first_name=Airatka&last_name=Hram&password=LionKing
 ###
 
 # Mufasa@gmail.com     | LionKing | Mufasa-7060439016582037422
