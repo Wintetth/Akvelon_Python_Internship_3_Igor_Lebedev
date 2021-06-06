@@ -27,6 +27,17 @@ def create_transaction(key: str):
     )
 
 def delete_transaction(key: str, transaction_id: int):
+    user: User = User.get_or_none(key=key)
+
+    if user is None:
+        return (jsonify(message="You need to log in before."), 403)
+
+    transaction: Transaction = Transaction.get_or_none(transaction_id=transaction_id, user=user)
+    if transaction is None:
+        return (jsonify(message="Transaction was not found."), 404)
+
+    transaction.delete_instance()
+
     return (jsonify(message="Transaction deleted."), 201)
 
 def edit_transaction(key: str, transaction_id: int):
