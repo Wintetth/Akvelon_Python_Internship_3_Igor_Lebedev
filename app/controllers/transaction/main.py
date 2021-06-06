@@ -12,3 +12,7 @@ def edit_transaction():
 
 def view_transaction():
     return (jsonify(message="Transaction viewed."), 200)
+
+def view_all_transactions():
+    return (jsonify(message="All transactions viewed."), 200)
+    

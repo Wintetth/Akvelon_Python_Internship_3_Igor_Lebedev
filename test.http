@@ -1,27 +1,35 @@
 GET http://localhost:5000/
 ###
 
-POST http://localhost:5000/user/create
+POST http://localhost:5000/user/create HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+first_name=Airatk&last_name=Shram&email=Mufasa@gmail.com&password=LionKing
 ###
 
-POST http://localhost:5000/user/delete
+POST http://localhost:5000/user/delete HTTP/1.1
+content-type: application/json
 ###
 
-POST http://localhost:5000/user/edit
+POST http://localhost:5000/user/edit HTTP/1.1
+content-type: application/json
 ###
 
-GET http://localhost:5000/user/view
+GET http://localhost:5000/user/view HTTP/1.1
 ###
 
 
 
-POST http://localhost:5000/transaction/create
+POST http://localhost:5000/transaction/create HTTP/1.1
+content-type: application/json
 ###
 
-POST http://localhost:5000/transaction/delete
+POST http://localhost:5000/transaction/delete HTTP/1.1
+content-type: application/json
 ###
 
-POST http://localhost:5000/transaction/edit
+POST http://localhost:5000/transaction/edit HTTP/1.1
+content-type: application/json
 ###
 
-GET http://localhost:5000/transaction/view
+GET http://localhost:5000/transaction/view HTTP/1.1

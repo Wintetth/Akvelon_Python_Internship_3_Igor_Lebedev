@@ -12,3 +12,4 @@ def method_not_allowed(_):
 
 def internal_server_error(_):
     return (jsonify(message="Internal server error."), 500)
+    

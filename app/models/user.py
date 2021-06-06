@@ -1,4 +1,4 @@
-from peewee import AutoField, TextField, SQL
+from peewee import AutoField, TextField
 
 from app.models.base import Base
 
@@ -8,4 +8,8 @@ class User(Base):
 
     first_name: TextField = TextField()
     last_name: TextField = TextField(null=True)
-    email: TextField = TextField()
+
+    email: TextField = TextField(unique=True)
+    password: TextField = TextField()
+    
+    key: TextField = TextField(unique=True)
