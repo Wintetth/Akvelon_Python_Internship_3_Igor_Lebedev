@@ -1,5 +1,4 @@
 from flask import Flask
-from flask import jsonify
 
 from app.controllers import user
 from app.controllers import transaction
@@ -8,6 +7,10 @@ from app.controllers import not_found
 from app.controllers import method_not_allowed
 from app.controllers import internal_server_error
 
+from app.utilities.database.helpers import create_tables
+
+
+create_tables()
 
 app: Flask = Flask(import_name=__name__)
 
