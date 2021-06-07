@@ -7,7 +7,6 @@ from app.controllers import forbidden
 from app.controllers import not_found
 from app.controllers import method_not_allowed
 from app.controllers import internal_server_error
-
 from app.utilities.database.helpers import create_tables
 
 

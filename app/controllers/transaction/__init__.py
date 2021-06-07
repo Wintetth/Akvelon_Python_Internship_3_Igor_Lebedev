@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 from app.controllers.transaction.main import create_transaction
 from app.controllers.transaction.main import delete_transaction
@@ -8,8 +8,12 @@ from app.controllers.transaction.main import view_all_transactions
 from app.controllers.transaction.main import grouped_transactions
 
 
+def transaction():
+    return render_template("transaction.html")
+
 transaction: Blueprint = Blueprint(name=__name__.split(".")[-1], import_name=__name__, url_prefix="/transaction/<string:key>")
 
+transaction.add_url_rule(rule="/", endpoint="transaction", view_func=transaction, methods=["POST"])
 transaction.add_url_rule(rule="/create", endpoint="create_transaction", view_func=create_transaction, methods=["POST"])
 transaction.add_url_rule(rule="/delete/<int:transaction_id>", endpoint="delete_transaction", view_func=delete_transaction, methods=["POST"])
 transaction.add_url_rule(rule="/edit/<int:transaction_id>", endpoint="edit_transaction", view_func=edit_transaction, methods=["POST"])
