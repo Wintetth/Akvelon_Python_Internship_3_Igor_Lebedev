@@ -12,5 +12,4 @@ class Transaction(Base):
     user: ForeignKeyField = ForeignKeyField(User, backref="transactions", on_delete="CASCADE")
 
     amount: FloatField = FloatField(default=0)
-    date: DateField = DateField(default=date.today)
-    
+    date: DateField = DateField(default=date.today)  

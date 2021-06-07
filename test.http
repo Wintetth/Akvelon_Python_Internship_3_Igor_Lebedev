@@ -34,7 +34,7 @@ email=Mufasa@gmail.com&password=LionKing
 POST http://localhost:5000/transaction/Mufasa-5498381435679789444/create HTTP/1.1
 content-type: application/x-www-form-urlencoded
 
-amount=-5
+amount=322
 ###
 
 POST http://localhost:5000/transaction/delete HTTP/1.1
@@ -54,3 +54,8 @@ GET http://localhost:5000/transaction/Mufasa-5498381435679789444/view_all/2021.0
 ###
 
 GET http://localhost:5000/transaction/Mufasa-5498381435679789444/grouped HTTP/1.1
+###
+
+
+
+GET http://localhost:5000/fibonacci/7 HTTP/1.1

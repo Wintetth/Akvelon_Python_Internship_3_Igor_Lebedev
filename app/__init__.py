@@ -2,6 +2,7 @@ from flask import Flask
 
 from app.controllers import user
 from app.controllers import transaction
+from app.controllers import fibonacci_controller
 from app.controllers import forbidden
 from app.controllers import not_found
 from app.controllers import method_not_allowed
@@ -21,3 +22,5 @@ app.register_error_handler(500, internal_server_error)
 
 app.register_blueprint(user)
 app.register_blueprint(transaction)
+
+app.add_url_rule(rule="/fibonacci/<int:n>", endpoint="fibonacci", view_func=fibonacci_controller, methods=["GET"])
